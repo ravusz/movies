@@ -1,5 +1,5 @@
 import { fetchAllCharacters } from "@/lib/api/apiDocs/characters";
-import { TableThead, TableTheadTr, TableTh } from "@/components/Table";
+import { TableThead, TableTheadTr, TableTh, TableTbodyTr, TableTd, TableEmpty } from "@/components/Table";
 
 export async function CharactersTableHeader() {
   return (
@@ -15,23 +15,28 @@ export async function CharactersTableHeader() {
 export async function CharactersTableBody() {
   const { data: characters = [] } = await fetchAllCharacters();
 
+  console.log("characters", characters)
+
 
   if (characters.length === 0) {
     return (
-      <div
-
-      />
+      <TableEmpty />
     );
   }
 
   return (
     <>
       {characters.map(
-        ({ id }) => {
+        ({ id, name }) => {
           return (
-            <div key={`character-${id}`}>
-              {id}
-            </div>
+            <TableTbodyTr key={`character-${id}`}>
+              <TableTd>
+                {name}
+              </TableTd>
+              <TableTd>
+                {id}
+              </TableTd>
+            </TableTbodyTr>
           );
         },
       )}

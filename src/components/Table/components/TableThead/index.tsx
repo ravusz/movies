@@ -1,6 +1,10 @@
-export async function TableThead({ children }: { children: React.ReactNode }) {
+type TableTheadProps = React.ComponentProps<"thead"> & {
+  children: React.ReactNode
+}
+
+export async function TableThead({ children, className, ...restProps }: TableTheadProps) {
   return (
-    <thead className="ltr:text-left rtl:text-right">
+    <thead className={`ltr:text-left rtl:text-right ${className}`} {...restProps}>
       {children}
     </thead>
   );

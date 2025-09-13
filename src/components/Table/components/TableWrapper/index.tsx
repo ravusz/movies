@@ -1,6 +1,10 @@
-export async function TableWrapper({ children }: { children: React.ReactNode }) {
+type TableWrapperProps = React.ComponentProps<"table"> & {
+  children: React.ReactNode
+}
+
+export async function TableWrapper({ children, className, ...restProps }: TableWrapperProps) {
   return (
-    <table className="min-w-full divide-y-2 divide-gray-200">
+    <table className={`min-w-full divide-y-2 divide-gray-200 ${className}`} {...restProps}>
       {children}
     </table>
   );

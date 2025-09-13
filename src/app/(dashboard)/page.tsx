@@ -1,6 +1,6 @@
 import { CharactersSearchInput } from "@/app/(dashboard)/components/CharactersSearchInput";
 import { CharactersTableBody, CharactersTableHeader } from "@/app/(dashboard)/components/CharactersTable";
-import { Table } from "@/components/Table";
+import { Table, TableTbody } from "@/components/Table";
 
 type CharactersPageProps = {
   searchParams: any
@@ -15,7 +15,9 @@ export default function CharactersPage({ searchParams }: CharactersPageProps) {
         <CharactersSearchInput />
         <Table>
           <CharactersTableHeader />
-          <CharactersTableBody />
+          <TableTbody>
+            <CharactersTableBody />
+          </TableTbody>
         </Table>
       </main>
     </div>
