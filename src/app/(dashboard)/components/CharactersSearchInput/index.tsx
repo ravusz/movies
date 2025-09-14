@@ -5,8 +5,6 @@ import { useSearchQueryParameter } from "@/lib/hooks/useSearchQueryParameter";
 
 import { useDebouncedCallback } from 'use-debounce';
 
-
-
 export function CharactersSearchInput() {
   const { searchQuery, updateSearchQuery } = useSearchQueryParameter();
 
