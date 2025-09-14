@@ -18,7 +18,7 @@ export default function CharacterFilmsPage({ params }: CharacterFilmsPageProps) 
       <div className="h-full relative overflow-auto">
         <Table className="absolute">
           <CharacterMoviesTableHeader />
-          <TableTbodySuspense>
+          <TableTbodySuspense cellsCount={1}>
             <CharacterMoviesTableBody params={params} />
           </TableTbodySuspense>
         </Table>

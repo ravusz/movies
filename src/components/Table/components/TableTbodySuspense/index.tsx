@@ -6,15 +6,17 @@ import { TableTbody } from "../TableTbody";
 
 type TableTbodySuspenseProps = {
   children: ReactNode;
+  rowsCount?: number
+  cellsCount?: number
 }
 
 export function TableTbodySuspense({
-  children,
+  children, rowsCount, cellsCount
 }: TableTbodySuspenseProps) {
   return (
     <TableTbody>
       <TbodyErrorBoundary>
-        <Suspense fallback={<TbodySkeleton />} >
+        <Suspense fallback={<TbodySkeleton rowsCount={rowsCount} cellsCount={cellsCount} />} >
           {children}
         </Suspense>
       </TbodyErrorBoundary>
