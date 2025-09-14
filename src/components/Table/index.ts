@@ -6,3 +6,4 @@ export { TableTbody } from "./components/TableTbody";
 export { TableTbodyTr } from "./components/TableTbodyTr";
 export { TableTd } from "./components/TableTd";
 export { TableEmpty } from "./components/TableEmpty";
+export { TableTbodySuspense } from "./components/TableTbodySuspense";
