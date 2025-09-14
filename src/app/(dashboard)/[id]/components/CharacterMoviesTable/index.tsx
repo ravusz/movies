@@ -16,6 +16,7 @@ type CharacterMoviesTableProps = {
 }
 
 export async function CharacterMoviesTableBody({ params }: CharacterMoviesTableProps) {
+
   const { id } = (await params)
 
   const { data: movies = [] } = await fetchAllCharacterFilms({ id });
