@@ -1,27 +1,7 @@
-import { CharactersSearchInput } from "@/app/(dashboard)/components/CharactersSearchInput";
-import { CharactersTableBody, CharactersTableHeader } from "@/app/(dashboard)/components/CharactersTable";
-import { Table, TableTbodySuspense } from "@/components/Table";
-import { ContentCard } from "@/components/ContentCard";
+import { redirect } from "next/navigation";
 
-type CharactersPageProps = {
-  searchParams: Promise<{ search?: string }>;
-};
+import { Routes } from "@/lib/constants/routes";
 
-export default function CharactersPage({ searchParams }: CharactersPageProps) {
-  return (
-    <ContentCard title="Star Wars Characters">
-      <div className="mb-4">
-        <CharactersSearchInput />
-      </div>
-
-      <div className="h-full relative overflow-auto">
-        <Table className="absolute">
-          <CharactersTableHeader />
-          <TableTbodySuspense>
-            <CharactersTableBody searchParams={searchParams} />
-          </TableTbodySuspense>
-        </Table>
-      </div>
-    </ContentCard>
-  );
+export default function DashboardPage() {
+  redirect(Routes.Characters);
 }

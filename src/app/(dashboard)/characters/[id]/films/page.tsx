@@ -1,8 +1,9 @@
-import { CharacterMoviesTableBody, CharacterMoviesTableHeader } from "@/app/(dashboard)/[id]/components/CharacterMoviesTable"
+import { CharacterMoviesTableBody, CharacterMoviesTableHeader } from "./components/CharacterMoviesTable"
 import { Table, TableTbodySuspense } from "@/components/Table";
 import { ContentCard } from "@/components/ContentCard";
 import ArrowLeftIcon from "@/icons/arrow-left.svg";
 import { ActionLink } from "@/components/ActionLink";
+import { Routes } from "@/lib/constants/routes";
 
 type CharacterFilmsPageProps = {
   params: Promise<{ id: string }>;
@@ -11,7 +12,7 @@ type CharacterFilmsPageProps = {
 export default function CharacterFilmsPage({ params }: CharacterFilmsPageProps) {
   return (
     <ContentCard title="Character Films" action={
-      <ActionLink href="/" title="Go back">
+      <ActionLink href={Routes.Characters} title="Go back">
         <ArrowLeftIcon className="w-4" />
       </ActionLink>
     }>

@@ -2,6 +2,7 @@ import { fetchAllCharacters } from "@/lib/api/apiDocs/characters";
 import { TableThead, TableTheadTr, TableTh, TableTbodyTr, TableTd, TableEmpty } from "@/components/Table";
 import MovieIcon from "@/icons/movie.svg";
 import { ActionLink } from "@/components/ActionLink";
+import { Routes } from "@/lib/constants/routes";
 
 export async function CharactersTableHeader() {
   return (
@@ -48,7 +49,7 @@ export async function CharactersTableBody({ searchParams }: CharactersTableBodyP
               </TableTd>
               <TableTd className="text-end">
                 <ActionLink
-                  href={`/${id}`}
+                  href={`${Routes.Characters}/${id}/films`}
                   title="See movies"
                 >
                   <MovieIcon className="w-4" />
