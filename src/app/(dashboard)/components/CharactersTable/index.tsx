@@ -5,18 +5,22 @@ export async function CharactersTableHeader() {
   return (
     <TableThead>
       <TableTheadTr>
-        <TableTh>test</TableTh>
-        <TableTh>222</TableTh>
+        <TableTh>Name</TableTh>
+        <TableTh>Gender</TableTh>
+        <TableTh>Birth Year</TableTh>
       </TableTheadTr>
     </TableThead>
   );
 }
 
-export async function CharactersTableBody() {
-  const { data: characters = [] } = await fetchAllCharacters();
+type CharactersTableBodyProps = {
+  searchParams: Promise<{ search?: string }>;
+}
 
-  console.log("characters", characters)
+export async function CharactersTableBody({ searchParams }: CharactersTableBodyProps) {
+  const { search = "" } = (await searchParams)
 
+  const { data: characters = [] } = await fetchAllCharacters({ search });
 
   if (characters.length === 0) {
     return (
@@ -27,14 +31,17 @@ export async function CharactersTableBody() {
   return (
     <>
       {characters.map(
-        ({ id, name }) => {
+        ({ id, name, gender, birthYear }) => {
           return (
             <TableTbodyTr key={`character-${id}`}>
               <TableTd>
                 {name}
               </TableTd>
               <TableTd>
-                {id}
+                {gender}
+              </TableTd>
+              <TableTd>
+                {birthYear}
               </TableTd>
             </TableTbodyTr>
           );
