@@ -1,7 +1,7 @@
 import { fetchAllCharacters } from "@/lib/api/apiDocs/characters";
 import { TableThead, TableTheadTr, TableTh, TableTbodyTr, TableTd, TableEmpty } from "@/components/Table";
-import Link from "next/link";
 import MovieIcon from "@/icons/movie.svg";
+import { ActionLink } from "@/components/ActionLink";
 
 export async function CharactersTableHeader() {
   return (
@@ -47,13 +47,12 @@ export async function CharactersTableBody({ searchParams }: CharactersTableBodyP
                 {birthYear}
               </TableTd>
               <TableTd className="text-end">
-                <Link
+                <ActionLink
                   href={`/${id}`}
-                  className="inline-flex items-center justify-center p-2 rounded-sm hover:bg-gray-200 transition-colors duration-200"
                   title="See movies"
                 >
-                  <MovieIcon width="1rem" />
-                </Link>
+                  <MovieIcon className="w-4" />
+                </ActionLink>
               </TableTd>
             </TableTbodyTr>
           );

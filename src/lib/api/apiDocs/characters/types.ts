@@ -25,3 +25,8 @@ export type Character = {
   birthYear: string;
   speciesId: number;
 }
+
+export type Film = {
+  id: number;
+  title: string
+}

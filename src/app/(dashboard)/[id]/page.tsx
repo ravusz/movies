@@ -1,16 +1,28 @@
-import { CharactersSearchInput } from "@/app/(dashboard)/components/CharactersSearchInput";
-import { CharactersTableBody, CharactersTableHeader } from "@/app/(dashboard)/components/CharactersTable";
+import { CharacterMoviesTableBody, CharacterMoviesTableHeader } from "@/app/(dashboard)/[id]/components/CharacterMoviesTable"
 import { Table, TableTbodySuspense } from "@/components/Table";
 import { ContentCard } from "@/components/ContentCard";
+import ArrowLeftIcon from "@/icons/arrow-left.svg";
+import { ActionLink } from "@/components/ActionLink";
 
-type CharactersPageProps = {
-  searchParams: Promise<{ search?: string }>;
+type CharacterFilmsPageProps = {
+  params: Promise<{ id: string }>;
 };
 
-export default function CharacterFilmsPage({ searchParams }: CharactersPageProps) {
+export default function CharacterFilmsPage({ params }: CharacterFilmsPageProps) {
   return (
-    <ContentCard title="Character Films">
-      films
+    <ContentCard title="Character Films" action={
+      <ActionLink href="/" title="Go back">
+        <ArrowLeftIcon className="w-4" />
+      </ActionLink>
+    }>
+      <div className="h-full relative overflow-auto">
+        <Table className="absolute">
+          <CharacterMoviesTableHeader />
+          <TableTbodySuspense>
+            <CharacterMoviesTableBody params={params} />
+          </TableTbodySuspense>
+        </Table>
+      </div>
     </ContentCard>
   );
 }
