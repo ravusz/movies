@@ -4,7 +4,7 @@ type TableTheadProps = React.ComponentProps<"thead"> & {
 
 export async function TableThead({ children, className = "", ...restProps }: TableTheadProps) {
   return (
-    <thead className={`ltr:text-left rtl:text-right ${className}`} {...restProps}>
+    <thead className={`sticky top-0 bg-white ltr:text-left rtl:text-right ${className}`} {...restProps}>
       {children}
     </thead>
   );

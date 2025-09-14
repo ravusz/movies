@@ -14,8 +14,8 @@ export default function CharactersPage({ searchParams }: CharactersPageProps) {
         <CharactersSearchInput />
       </div>
 
-      <div className="overflow-x-auto">
-        <Table>
+      <div className="h-full relative overflow-auto">
+        <Table className="absolute">
           <CharactersTableHeader />
           <TableTbodySuspense>
             <CharactersTableBody searchParams={searchParams} />
