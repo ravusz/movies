@@ -8,10 +8,14 @@ export const charactersTags = {
 }
 
 export const fetchAllCharacters = async ({ search }: { search: string }): Promise<{ data: Character[] }> => {
+  const isDefault = !search;
+
   const characters = await apiDocsApi.get<CharacterResponse[]>("characters", {
     searchParams: {
       search
     },
+    cache: isDefault ? "force-cache" : "no-store",
+    next: isDefault ? { tags: [charactersTags.characters] } : undefined
   }).json();
   const data: Character[] = characters.map((character) => characterMapper(character));
 
