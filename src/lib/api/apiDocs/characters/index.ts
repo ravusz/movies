@@ -2,11 +2,16 @@ import type { Character, CharacterResponse, Film } from "@/lib/api/apiDocs/chara
 import { characterMapper } from "@/lib/api/apiDocs/characters/mapper";
 import { apiDocsApi } from "@/lib/api/apiDocs";
 
+export const charactersTags = {
+  characters: 'characters' as const,
+  characterFilms: (id: string) => `${charactersTags.characters}-${id}-films` as const,
+}
+
 export const fetchAllCharacters = async ({ search }: { search: string }): Promise<{ data: Character[] }> => {
   const characters = await apiDocsApi.get<CharacterResponse[]>("characters", {
     searchParams: {
       search
-    }
+    },
   }).json();
   const data: Character[] = characters.map((character) => characterMapper(character));
 
@@ -14,7 +19,12 @@ export const fetchAllCharacters = async ({ search }: { search: string }): Promis
 };
 
 export const fetchAllCharacterFilms = async ({ id }: { id: string }): Promise<{ data: Film[] }> => {
-  const films = await apiDocsApi.get<Film[]>(`characters/${id}/films`).json();
+  const films = await apiDocsApi.get<Film[]>(`characters/${id}/films`, {
+    cache: "force-cache",
+    next: {
+      tags: [charactersTags.characterFilms(id)]
+    }
+  }).json();
 
   return { data: films }
 };
